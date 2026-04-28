@@ -1,0 +1,219 @@
+@import 'tailwindcss';
+@import 'tw-animate-css';
+
+@custom-variant dark (&:is(.dark *));
+
+:root {
+  /* Core palette: deep charcoal/navy with vibrant cyan accent */
+  --background: oklch(0.18 0.02 250);
+  --foreground: oklch(0.98 0.005 250);
+
+  --card: oklch(0.22 0.025 250);
+  --card-foreground: oklch(0.98 0.005 250);
+
+  --popover: oklch(0.22 0.025 250);
+  --popover-foreground: oklch(0.98 0.005 250);
+
+  /* Vibrant cyan as primary accent */
+  --primary: oklch(0.78 0.15 200);
+  --primary-foreground: oklch(0.18 0.02 250);
+
+  --secondary: oklch(0.26 0.025 250);
+  --secondary-foreground: oklch(0.98 0.005 250);
+
+  --muted: oklch(0.26 0.02 250);
+  --muted-foreground: oklch(0.72 0.015 250);
+
+  --accent: oklch(0.78 0.15 200);
+  --accent-foreground: oklch(0.18 0.02 250);
+
+  --destructive: oklch(0.6 0.22 20);
+  --destructive-foreground: oklch(0.98 0.005 250);
+
+  --border: oklch(0.3 0.02 250);
+  --input: oklch(0.3 0.02 250);
+  --ring: oklch(0.78 0.15 200);
+
+  /* WhatsApp brand green for CTA */
+  --whatsapp: oklch(0.72 0.18 150);
+  --whatsapp-foreground: oklch(0.18 0.02 250);
+
+  --chart-1: oklch(0.78 0.15 200);
+  --chart-2: oklch(0.72 0.18 150);
+  --chart-3: oklch(0.6 0.1 220);
+  --chart-4: oklch(0.5 0.05 250);
+  --chart-5: oklch(0.4 0.04 250);
+
+  --radius: 1rem;
+
+  --sidebar: oklch(0.22 0.025 250);
+  --sidebar-foreground: oklch(0.98 0.005 250);
+  --sidebar-primary: oklch(0.78 0.15 200);
+  --sidebar-primary-foreground: oklch(0.18 0.02 250);
+  --sidebar-accent: oklch(0.26 0.025 250);
+  --sidebar-accent-foreground: oklch(0.98 0.005 250);
+  --sidebar-border: oklch(0.3 0.02 250);
+  --sidebar-ring: oklch(0.78 0.15 200);
+}
+
+.dark {
+  --background: oklch(0.18 0.02 250);
+  --foreground: oklch(0.98 0.005 250);
+  --card: oklch(0.22 0.025 250);
+  --card-foreground: oklch(0.98 0.005 250);
+  --popover: oklch(0.22 0.025 250);
+  --popover-foreground: oklch(0.98 0.005 250);
+  --primary: oklch(0.78 0.15 200);
+  --primary-foreground: oklch(0.18 0.02 250);
+  --secondary: oklch(0.26 0.025 250);
+  --secondary-foreground: oklch(0.98 0.005 250);
+  --muted: oklch(0.26 0.02 250);
+  --muted-foreground: oklch(0.72 0.015 250);
+  --accent: oklch(0.78 0.15 200);
+  --accent-foreground: oklch(0.18 0.02 250);
+  --destructive: oklch(0.6 0.22 20);
+  --destructive-foreground: oklch(0.98 0.005 250);
+  --border: oklch(0.3 0.02 250);
+  --input: oklch(0.3 0.02 250);
+  --ring: oklch(0.78 0.15 200);
+  --whatsapp: oklch(0.72 0.18 150);
+  --whatsapp-foreground: oklch(0.18 0.02 250);
+  --sidebar: oklch(0.22 0.025 250);
+  --sidebar-foreground: oklch(0.98 0.005 250);
+  --sidebar-primary: oklch(0.78 0.15 200);
+  --sidebar-primary-foreground: oklch(0.18 0.02 250);
+  --sidebar-accent: oklch(0.26 0.025 250);
+  --sidebar-accent-foreground: oklch(0.98 0.005 250);
+  --sidebar-border: oklch(0.3 0.02 250);
+  --sidebar-ring: oklch(0.78 0.15 200);
+}
+
+@theme inline {
+  --font-sans: var(--font-geist-sans), 'Geist', ui-sans-serif, system-ui, sans-serif;
+  --font-mono: var(--font-geist-mono), 'Geist Mono', ui-monospace, monospace;
+
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+  --color-popover: var(--popover);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-destructive: var(--destructive);
+  --color-destructive-foreground: var(--destructive-foreground);
+  --color-border: var(--border);
+  --color-input: var(--input);
+  --color-ring: var(--ring);
+  --color-whatsapp: var(--whatsapp);
+  --color-whatsapp-foreground: var(--whatsapp-foreground);
+  --color-chart-1: var(--chart-1);
+  --color-chart-2: var(--chart-2);
+  --color-chart-3: var(--chart-3);
+  --color-chart-4: var(--chart-4);
+  --color-chart-5: var(--chart-5);
+  --radius-sm: calc(var(--radius) - 8px);
+  --radius-md: calc(var(--radius) - 4px);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) + 4px);
+  --color-sidebar: var(--sidebar);
+  --color-sidebar-foreground: var(--sidebar-foreground);
+  --color-sidebar-primary: var(--sidebar-primary);
+  --color-sidebar-primary-foreground: var(--sidebar-primary-foreground);
+  --color-sidebar-accent: var(--sidebar-accent);
+  --color-sidebar-accent-foreground: var(--sidebar-accent-foreground);
+  --color-sidebar-border: var(--sidebar-border);
+  --color-sidebar-ring: var(--sidebar-ring);
+}
+
+@layer base {
+  * {
+    @apply border-border outline-ring/50;
+  }
+  body {
+    @apply bg-background text-foreground;
+    font-feature-settings: 'rlig' 1, 'calt' 1, 'ss01' 1;
+  }
+}
+
+/* Animated mesh gradient background */
+@keyframes blob-drift-1 {
+  0%,
+  100% {
+    transform: translate(0px, 0px) scale(1);
+  }
+  33% {
+    transform: translate(60px, 40px) scale(1.1);
+  }
+  66% {
+    transform: translate(-40px, 80px) scale(0.95);
+  }
+}
+
+@keyframes blob-drift-2 {
+  0%,
+  100% {
+    transform: translate(0px, 0px) scale(1);
+  }
+  33% {
+    transform: translate(-80px, 60px) scale(1.05);
+  }
+  66% {
+    transform: translate(50px, -40px) scale(1.1);
+  }
+}
+
+@keyframes blob-drift-3 {
+  0%,
+  100% {
+    transform: translate(0px, 0px) scale(1);
+  }
+  33% {
+    transform: translate(70px, -60px) scale(0.9);
+  }
+  66% {
+    transform: translate(-60px, -30px) scale(1.08);
+  }
+}
+
+@keyframes blob-drift-4 {
+  0%,
+  100% {
+    transform: translate(-50%, -50%) scale(1);
+  }
+  50% {
+    transform: translate(-45%, -55%) scale(1.15);
+  }
+}
+
+.animate-blob-1 {
+  animation: blob-drift-1 22s ease-in-out infinite;
+  will-change: transform;
+}
+.animate-blob-2 {
+  animation: blob-drift-2 26s ease-in-out infinite;
+  will-change: transform;
+}
+.animate-blob-3 {
+  animation: blob-drift-3 30s ease-in-out infinite;
+  will-change: transform;
+}
+.animate-blob-4 {
+  animation: blob-drift-4 18s ease-in-out infinite;
+  will-change: transform;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .animate-blob-1,
+  .animate-blob-2,
+  .animate-blob-3,
+  .animate-blob-4 {
+    animation: none;
+  }
+}
