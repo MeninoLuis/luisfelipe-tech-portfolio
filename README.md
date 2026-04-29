@@ -15,7 +15,7 @@ Landing page moderna e responsiva desenvolvida para apresentar soluções de sof
 
 ## 📬 Contato
 Estou disponível para novos desafios! 
-- [Fale comigo no WhatsApp](https://wa.me/5519984100954)
+- [Fale comigo no WhatsApp](https://wa.me/5519991070441)
 - [LinkedIn](www.linkedin.com/in/luisfelipe-ribeiro-ads)
 
 ---

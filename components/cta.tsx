@@ -3,7 +3,7 @@ import { MessageCircle, ArrowRight } from "lucide-react"
 
 export function Cta() {
   // Replace with actual number in E.164 format (no + or spaces)
-  const whatsappNumber = "5500000000000"
+  const whatsappNumber = "5519991070441"
   const whatsappMessage = encodeURIComponent(
     "Olá Luis! Gostaria de tirar uma ideia do papel.",
   )
