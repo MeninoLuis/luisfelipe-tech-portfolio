@@ -1,4 +1,4 @@
-import { Smartphone, Code2, Database } from "lucide-react"
+import { Globe, UtensilsCrossed, CalendarCheck, TrendingUp } from "lucide-react"
 import type { LucideIcon } from "lucide-react"
 
 type Service = {
@@ -10,25 +10,32 @@ type Service = {
 
 const services: Service[] = [
   {
-    icon: Smartphone,
-    title: "Apps Mobile",
+    icon: Globe,
+    title: "Site Institucional",
     description:
-      "Aplicativos nativos e multiplataforma com performance e UX de alto nível.",
-    tags: ["React Native", "Expo", "iOS", "Android"],
+      "Página profissional para o seu negócio aparecer no Google e passar confiança para novos clientes.",
+    tags: ["SEO Local", "Mobile First", "Google", "Profissional"],
   },
   {
-    icon: Code2,
-    title: "Sistemas Web",
+    icon: UtensilsCrossed,
+    title: "Cardápio Digital",
     description:
-      "Plataformas robustas, APIs escaláveis e dashboards sob medida para o seu negócio.",
-    tags: ["Java", "JavaScript", "React", "Node.js", "Spring"],
+      "Menu online com fotos e preços. Clientes pedem direto pelo WhatsApp, sem app para baixar.",
+    tags: ["WhatsApp", "QR Code", "Mobile First", "Pedido Online"],
   },
   {
-    icon: Database,
-    title: "Back-end & Dados",
+    icon: CalendarCheck,
+    title: "Agendamento Online",
     description:
-      "Arquitetura robusta de servidores, modelagem e integração de bancos de dados escaláveis.",
-    tags: ["SQL", "NoSQL", "API", "Cloud", "Docker"],
+      "Agenda digital para salões, clínicas e prestadores de serviço. Clientes marcam horário 24 h por dia.",
+    tags: ["Salões", "Clínicas", "Agendamento 24h", "WhatsApp"],
+  },
+  {
+    icon: TrendingUp,
+    title: "Landing Page de Vendas",
+    description:
+      "Página focada em conversão para promoções, lançamentos e campanhas nas redes sociais.",
+    tags: ["Conversão", "Promoções", "Redes Sociais", "Mobile First"],
   },
 ]
 

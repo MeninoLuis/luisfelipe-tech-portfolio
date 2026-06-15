@@ -33,19 +33,20 @@ export function Hero() {
 
       {/* Title */}
       <p className="mt-2 text-sm font-medium text-primary sm:text-base">
-        Software Developer
+        Criador de Sites
       </p>
 
       {/* Location */}
       <div className="mt-2 flex items-center gap-1.5 text-xs text-muted-foreground">
         <MapPin className="h-3.5 w-3.5" aria-hidden="true" />
-        <span>Campinas, SP, Brasil— Disponível para projetos</span>
+        <span>Campinas, SP — Atendendo negócios locais</span>
       </div>
 
       {/* Bio */}
       <p className="mt-5 max-w-md text-pretty text-sm leading-relaxed text-muted-foreground sm:text-base">
-        Transformando ideias em produtos digitais. Do protótipo à produção, com
-        código limpo, design cuidadoso e foco em resultados reais.
+        Seu negócio merece ser encontrado online. Crio sites profissionais
+        que aparecem no Google, passam confiança e atraem mais clientes —
+        sem você precisar entender de tecnologia.
       </p>
     </section>
   )

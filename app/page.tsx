@@ -16,7 +16,7 @@ export default function Page() {
         <div className="mt-10 space-y-10">
           <Services />
           <Portfolio />
-          <Cta />
+<Cta />
         </div>
 
         <footer className="mt-12 pt-6 text-center text-xs text-muted-foreground">
