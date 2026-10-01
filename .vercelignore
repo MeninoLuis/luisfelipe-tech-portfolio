@@ -1,0 +1,10 @@
+node_modules
+.next
+.git
+verification
+*.tsbuildinfo
+.env*
+ENTREGA.md
+README.md
+pnpm-lock.yaml
+pnpm-workspace.yaml

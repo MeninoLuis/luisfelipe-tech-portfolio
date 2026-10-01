@@ -1,96 +1,106 @@
-import { Globe, UtensilsCrossed, CalendarCheck, TrendingUp } from "lucide-react"
-import type { LucideIcon } from "lucide-react"
-
-type Service = {
-  icon: LucideIcon
-  title: string
-  description: string
-  tags: string[]
-}
-
-const services: Service[] = [
+import {
+  ArrowUpRight,
+  CalendarDays,
+  ChartNoAxesCombined,
+  ClipboardList,
+  Globe2,
+  PanelsTopLeft,
+} from "lucide-react";
+const services = [
   {
-    icon: Globe,
-    title: "Site Institucional",
-    description:
-      "Página profissional para o seu negócio aparecer no Google e passar confiança para novos clientes.",
-    tags: ["SEO Local", "Mobile First", "Google", "Profissional"],
+    icon: Globe2,
+    title: "Seu negócio na internet",
+    text: "Sites institucionais, páginas de divulgação e catálogos para apresentar o que você faz e facilitar o contato.",
+    tags: "Comércio · Prestadores de serviço · Empresas locais",
+    type: "site",
   },
   {
-    icon: UtensilsCrossed,
-    title: "Cardápio Digital",
-    description:
-      "Menu online com fotos e preços. Clientes pedem direto pelo WhatsApp, sem app para baixar.",
-    tags: ["WhatsApp", "QR Code", "Mobile First", "Pedido Online"],
+    icon: CalendarDays,
+    title: "Agenda mais organizada",
+    text: "Escolha de serviço, dia e horário em uma experiência simples para seu cliente e para você.",
+    tags: "Beleza · Profissionais autônomos · Atendimentos",
+    type: "agenda",
   },
   {
-    icon: CalendarCheck,
-    title: "Agendamento Online",
-    description:
-      "Agenda digital para salões, clínicas e prestadores de serviço. Clientes marcam horário 24 h por dia.",
-    tags: ["Salões", "Clínicas", "Agendamento 24h", "WhatsApp"],
+    icon: ClipboardList,
+    title: "Pedidos com as informações certas",
+    text: "Formulários para selecionar produtos, quantidades e preferências antes de confirmar o pedido ou atendimento.",
+    tags: "Encomendas · Pré-pedidos · Solicitações de orçamento",
+    type: "pedido",
   },
   {
-    icon: TrendingUp,
-    title: "Landing Page de Vendas",
-    description:
-      "Página focada em conversão para promoções, lançamentos e campanhas nas redes sociais.",
-    tags: ["Conversão", "Promoções", "Redes Sociais", "Mobile First"],
+    icon: PanelsTopLeft,
+    title: "Processos em um só lugar",
+    text: "Sistemas sob medida, quadros de tarefas e painéis para acompanhar as etapas do trabalho.",
+    tags: "Pequenas equipes · Operações · Organização interna",
+    type: "sistema",
   },
-]
-
+  {
+    icon: ChartNoAxesCombined,
+    title: "Mais clareza nos seus dados",
+    text: "Dashboards que transformam planilhas em gráficos, filtros e indicadores para apoiar sua análise.",
+    tags: "Gestão · RH · Relatórios e indicadores",
+    type: "dashboard",
+  },
+];
 export function Services() {
   return (
-    <section aria-labelledby="services-heading" className="w-full">
-      <div className="mb-5 flex items-center justify-between">
-        <h2
-          id="services-heading"
-          className="text-sm font-semibold uppercase tracking-wider text-muted-foreground"
-        >
-          Serviços
-        </h2>
-        <span className="h-px flex-1 bg-gradient-to-r from-border to-transparent ml-4" />
+    <section
+      className="section services-section"
+      id="solucoes"
+      aria-labelledby="services-title"
+    >
+      <div className="container">
+        <div className="section-heading">
+          <div>
+            <p className="eyebrow">02 / O QUE POSSO CRIAR COM VOCÊ</p>
+            <h2 id="services-title">
+              Tecnologia que cabe
+              <br />
+              na sua realidade.
+            </h2>
+          </div>
+          <p>
+            Começamos pelo que seu negócio precisa.
+            <br />A solução vem depois.
+          </p>
+        </div>
+        <div className="services-grid">
+          {services.map(({ icon: Icon, title, text, tags, type }, i) => (
+            <article className="service" key={title}>
+              <div className="service-top">
+                <Icon size={26} strokeWidth={1.5} />
+                <span>0{i + 1}</span>
+              </div>
+              <h3>{title}</h3>
+              <p>{text}</p>
+              <span className="service-tags">{tags}</span>
+              <a
+                className="service-link"
+                href={`?servico=${type}#contato`}
+                aria-label={`Conversar sobre ${title.toLowerCase()}`}
+              >
+                <span>Quero uma solução assim</span>
+                <ArrowUpRight size={19} />
+              </a>
+            </article>
+          ))}
+          <div className="service service-note">
+            <span className="eyebrow">TEM OUTRA IDEIA?</span>
+            <h3>
+              Vamos entender
+              <br />o que faz sentido.
+            </h3>
+            <p>
+              Você não precisa chegar com uma solução pronta. Me conte o
+              problema que quer resolver.
+            </p>
+            <a className="button" href="#contato">
+              Conversar sobre minha ideia <ArrowUpRight size={18} />
+            </a>
+          </div>
+        </div>
       </div>
-
-      <ul className="grid grid-cols-1 gap-4">
-        {services.map(({ icon: Icon, title, description, tags }) => (
-          <li
-            key={title}
-            className="group relative overflow-hidden rounded-2xl border border-border bg-card p-5 transition-colors hover:border-primary/50"
-          >
-            {/* Decorative accent */}
-            <div
-              aria-hidden="true"
-              className="pointer-events-none absolute -right-12 -top-12 h-32 w-32 rounded-full bg-primary/5 transition-opacity group-hover:bg-primary/10"
-            />
-
-            <div className="relative flex items-start gap-4">
-              <div className="flex h-11 w-11 shrink-0 items-center justify-center rounded-xl bg-primary/10 text-primary ring-1 ring-primary/20">
-                <Icon className="h-5 w-5" aria-hidden="true" />
-              </div>
-
-              <div className="min-w-0 flex-1">
-                <h3 className="text-base font-semibold text-foreground">
-                  {title}
-                </h3>
-                <p className="mt-1 text-sm leading-relaxed text-muted-foreground">
-                  {description}
-                </p>
-                <div className="mt-3 flex flex-wrap gap-1.5">
-                  {tags.map((tag) => (
-                    <span
-                      key={tag}
-                      className="rounded-full border border-border bg-secondary/50 px-2.5 py-0.5 text-[11px] font-medium text-muted-foreground"
-                    >
-                      {tag}
-                    </span>
-                  ))}
-                </div>
-              </div>
-            </div>
-          </li>
-        ))}
-      </ul>
     </section>
-  )
+  );
 }

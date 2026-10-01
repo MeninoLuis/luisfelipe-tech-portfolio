@@ -1,53 +1,119 @@
-import Image from "next/image"
-import { MapPin } from "lucide-react"
-
+import Image from "next/image";
+import {
+  ArrowDown,
+  ArrowUpRight,
+  CalendarDays,
+  Check,
+  Code2,
+} from "lucide-react";
 export function Hero() {
   return (
-    <section className="flex flex-col items-center text-center">
-      {/* Profile photo with accent ring */}
-      <div className="relative">
-        <div
-          aria-hidden="true"
-          className="absolute -inset-1 rounded-full bg-primary/30 blur-md"
-        />
-        <div className="relative h-28 w-28 overflow-hidden rounded-full border-2 border-primary/60 bg-card shadow-2xl sm:h-32 sm:w-32">
-          <Image
-            src="/luis-felipe.jpg"
-            alt="Foto de Luis Felipe"
-            fill
-            sizes="128px"
-            className="object-cover"
-            priority
-          />
+    <section
+      className="hero container"
+      id="inicio"
+      aria-labelledby="hero-title"
+    >
+      <div className="hero-copy">
+        <p className="eyebrow">
+          <span className="status-dot" /> DESENVOLVEDOR WEB · CAMPINAS, SP
+        </p>
+        <h1 id="hero-title">
+          Seu negócio,
+          <br />
+          uma versão
+          <br />
+          <span className="hero-highlight">
+            mais digital
+            <svg viewBox="0 0 480 16" fill="none" aria-hidden="true">
+              <path
+                d="M3 12C118 0 287 1 475 8"
+                stroke="currentColor"
+                strokeWidth="3"
+                strokeLinecap="round"
+              />
+            </svg>
+          </span>
+          .
+        </h1>
+        <p className="hero-description">
+          Sites que apresentam. Agendas que organizam.
+          <br className="desktop-break" /> Sistemas que simplificam o seu dia a
+          dia.
+        </p>
+        <div className="hero-actions">
+          <a className="button" href="#contato">
+            Vamos criar seu projeto <ArrowUpRight size={19} />
+          </a>
+          <a className="button-quiet" href="#projetos">
+            Conheça meu trabalho <ArrowDown size={17} />
+          </a>
         </div>
-        {/* Online indicator */}
-        <span className="absolute bottom-1 right-1 flex h-4 w-4 items-center justify-center rounded-full bg-background ring-2 ring-background">
-          <span className="h-2.5 w-2.5 animate-pulse rounded-full bg-[color:var(--whatsapp)]" />
+        <div className="hero-signature">
+          <Image src="/luis-felipe.webp" alt="" width={42} height={42} />
+          <p>
+            Da primeira conversa à entrega,
+            <br />
+            <strong>você fala direto comigo.</strong>
+          </p>
+        </div>
+      </div>
+      <div
+        className="hero-visual"
+        aria-label="Apresentação dos tipos de projeto"
+      >
+        <div className="visual-grid" aria-hidden="true" />
+        <span className="visual-top-label">
+          <Code2 size={15} /> DA IDEIA À INTERFACE
+        </span>
+        <div className="hero-browser">
+          <div className="browser-bar">
+            <span className="browser-dots">
+              <i />
+              <i />
+              <i />
+            </span>
+            <span>shopping-do-alimento.vercel.app</span>
+            <ArrowUpRight size={13} />
+          </div>
+          <div className="hero-project-image">
+            <Image
+              src="/projects/shopping.webp"
+              alt="Página do site Shopping do Alimento, empresa do Ceasa Campinas"
+              fill
+              sizes="(max-width: 760px) 90vw, 600px"
+              priority
+              className="project-cover"
+            />
+          </div>
+          <div className="browser-caption">
+            <span>
+              <span className="status-dot" /> PROJETO DESENVOLVIDO
+            </span>
+            <strong>Shopping do Alimento</strong>
+          </div>
+        </div>
+        <div className="floating-agenda">
+          <span className="mini-icon">
+            <CalendarDays size={18} />
+          </span>
+          <div>
+            <strong>Uma agenda mais simples.</strong>
+            <span>Serviço → Dia → Horário</span>
+          </div>
+          <Check size={16} className="accent" />
+        </div>
+        <div className="floating-code">
+          <Code2 size={18} />
+          <span>
+            Uma solução para
+            <br />
+            <strong>o seu jeito de trabalhar.</strong>
+          </span>
+        </div>
+        <span className="visual-bottom-label">
+          DESIGN + DESENVOLVIMENTO + PROPÓSITO
         </span>
       </div>
-
-      {/* Name */}
-      <h1 className="mt-6 text-balance text-3xl font-semibold tracking-tight sm:text-4xl">
-        Luis Felipe
-      </h1>
-
-      {/* Title */}
-      <p className="mt-2 text-sm font-medium text-primary sm:text-base">
-        Criador de Sites
-      </p>
-
-      {/* Location */}
-      <div className="mt-2 flex items-center gap-1.5 text-xs text-muted-foreground">
-        <MapPin className="h-3.5 w-3.5" aria-hidden="true" />
-        <span>Campinas, SP — Atendendo negócios locais</span>
-      </div>
-
-      {/* Bio */}
-      <p className="mt-5 max-w-md text-pretty text-sm leading-relaxed text-muted-foreground sm:text-base">
-        Seu negócio merece ser encontrado online. Crio sites profissionais
-        que aparecem no Google, passam confiança e atraem mais clientes —
-        sem você precisar entender de tecnologia.
-      </p>
     </section>
-  )
+  );
 }

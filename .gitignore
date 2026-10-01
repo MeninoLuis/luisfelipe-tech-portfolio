@@ -15,3 +15,9 @@ node_modules
 .next/
 .env
 .DS_Store
+.vercel
+.env*
+
+# Local verification and compiler caches
+verification/
+*.tsbuildinfo

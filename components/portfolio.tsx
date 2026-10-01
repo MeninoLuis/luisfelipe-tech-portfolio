@@ -1,85 +1,178 @@
-import Image from "next/image"
-import Link from "next/link"
-import { ArrowUpRight } from "lucide-react"
-import { projects } from "@/data/projects"
-
+"use client";
+import { useRef, useState } from "react";
+import { ArrowUpRight, Check, X } from "lucide-react";
+import { projects, type Project } from "@/data/projects";
+import { ProjectPreview } from "@/components/project-preview";
+import { whatsappUrl } from "@/lib/site";
+const filters = ["Todos", "Sites", "Agendamentos", "Sistemas e dados"] as const;
 export function Portfolio() {
+  const [filter, setFilter] = useState<string>("Todos");
+  const [selected, setSelected] = useState<Project | null>(null);
+  const dialog = useRef<HTMLDialogElement>(null);
+  const trigger = useRef<HTMLButtonElement | null>(null);
+  const visible = projects.filter(
+    (p) => filter === "Todos" || p.category === filter,
+  );
+  function openProject(project: Project, button: HTMLButtonElement) {
+    trigger.current = button;
+    setSelected(project);
+    dialog.current?.showModal();
+    document.body.classList.add("dialog-open");
+  }
+  function onClose() {
+    document.body.classList.remove("dialog-open");
+    trigger.current?.focus();
+  }
   return (
-    <section aria-labelledby="portfolio-heading" className="w-full">
-      <div className="mb-5 flex items-center justify-between">
-        <h2
-          id="portfolio-heading"
-          className="text-sm font-semibold uppercase tracking-wider text-muted-foreground"
-        >
-          Portfólio em destaque
-        </h2>
-        <span className="h-px flex-1 bg-gradient-to-r from-border to-transparent ml-4" />
-      </div>
-
-      <ul className="flex flex-col gap-6">
-        {projects.map(({ title, description, image, imageAlt, category, icon: Icon, link, badge }) => (
-          <li key={title}>
-            <article className="group overflow-hidden rounded-2xl border border-border bg-card">
-              {/* Project image */}
-              <div className="relative aspect-[16/10] w-full overflow-hidden bg-secondary">
-                <Image
-                  src={image}
-                  alt={imageAlt}
-                  fill
-                  sizes="(max-width: 640px) 100vw, 480px"
-                  className="object-cover transition-transform duration-500 group-hover:scale-105"
-                />
-                <div
-                  aria-hidden="true"
-                  className="absolute inset-0 bg-gradient-to-t from-card via-card/30 to-transparent"
-                />
-                <span className="absolute left-4 top-4 inline-flex items-center gap-1.5 rounded-full border border-border bg-background/80 px-2.5 py-1 text-[11px] font-medium text-muted-foreground backdrop-blur">
-                  <span className="h-1.5 w-1.5 rounded-full bg-primary" />
-                  {category}
-                </span>
-              </div>
-
-              {/* Content */}
-              <div className="p-5">
-                <div className="flex items-start gap-3">
-                  <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-xl bg-primary/10 text-primary ring-1 ring-primary/20">
-                    <Icon className="h-5 w-5" aria-hidden="true" />
-                  </div>
-                  <div className="min-w-0 flex-1">
-                    <h3 className="text-lg font-semibold text-foreground">
-                      {title}
-                    </h3>
-                    <p className="mt-1 text-sm leading-relaxed text-muted-foreground">
-                      {description}
-                    </p>
-                  </div>
+    <section
+      className="section portfolio-section"
+      id="projetos"
+      aria-labelledby="portfolio-title"
+    >
+      <div className="container">
+        <div className="section-heading">
+          <div>
+            <p className="eyebrow">01 / TRABALHOS SELECIONADOS</p>
+            <h2 id="portfolio-title">
+              Cada projeto,
+              <br />
+              um problema resolvido<span className="accent">.</span>
+            </h2>
+          </div>
+          <p>
+            Da presença digital à organização do trabalho.
+            <br />
+            Conheça o contexto e a solução de cada projeto.
+          </p>
+        </div>
+        <div className="portfolio-toolbar">
+          <div
+            className="project-filters"
+            role="group"
+            aria-label="Filtrar projetos"
+          >
+            {filters.map((f) => (
+              <button
+                type="button"
+                key={f}
+                aria-pressed={filter === f}
+                onClick={() => setFilter(f)}
+              >
+                {f}
+              </button>
+            ))}
+          </div>
+          <span className="project-count" aria-live="polite">
+            {visible.length.toString().padStart(2, "0")} projetos
+          </span>
+        </div>
+        <div className="projects-grid">
+          {visible.map((project) => (
+            <article key={project.id} className="project-card">
+              <ProjectPreview id={project.id} />
+              <div className="project-info">
+                <p className="project-label">{project.label}</p>
+                <div className="project-title-row">
+                  <h3>{project.title}</h3>
+                  <button
+                    className="project-open"
+                    type="button"
+                    onClick={(e) => openProject(project, e.currentTarget)}
+                    aria-label={`Ver detalhes de ${project.title}`}
+                  >
+                    <ArrowUpRight size={22} />
+                  </button>
                 </div>
-
-                {/* Badge */}
-                {badge && (
-                  <p className="mt-4 inline-flex items-center gap-1.5 rounded-full border border-primary/30 bg-primary/10 px-3 py-1 text-[11px] font-medium text-primary">
-                    <span className="h-1.5 w-1.5 rounded-full bg-primary" aria-hidden="true" />
-                    {badge}
-                  </p>
-                )}
-
-                <Link
-                  href={link}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="mt-4 inline-flex w-full items-center justify-center gap-2 rounded-xl border border-border bg-secondary px-4 py-3 text-sm font-medium text-foreground transition-colors hover:border-primary/50 hover:bg-secondary/80"
-                >
-                  Ver Projeto
-                  <ArrowUpRight
-                    className="h-4 w-4 transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5"
-                    aria-hidden="true"
-                  />
-                </Link>
+                <p>{project.description}</p>
+                <div className="project-tags">
+                  {project.stack.slice(0, 3).map((t) => (
+                    <span key={t}>{t}</span>
+                  ))}
+                </div>
               </div>
             </article>
-          </li>
-        ))}
-      </ul>
+          ))}
+        </div>
+        <p className="portfolio-note">
+          Projetos para negócios e projetos de portfólio, identificados em cada
+          apresentação.
+        </p>
+      </div>
+      <dialog
+        ref={dialog}
+        onClose={onClose}
+        className="project-dialog"
+        aria-labelledby="project-dialog-title"
+        onClick={(e) => {
+          if (e.target === e.currentTarget) dialog.current?.close();
+        }}
+      >
+        <div className="dialog-content">
+          {selected ? (
+            <>
+              <button
+                autoFocus
+                type="button"
+                className="dialog-close"
+                aria-label="Fechar detalhes do projeto"
+                onClick={() => dialog.current?.close()}
+              >
+                <X size={23} />
+              </button>
+              <p className="eyebrow">{selected.label}</p>
+              <h2 id="project-dialog-title">{selected.title}</h2>
+              <ProjectPreview id={selected.id} />
+              <div className="case-grid">
+                <div>
+                  <h3>O contexto</h3>
+                  <p>{selected.context}</p>
+                </div>
+                <div>
+                  <h3>O que desenvolvi</h3>
+                  <p>{selected.solution}</p>
+                </div>
+              </div>
+              <h3>O que o projeto inclui</h3>
+              <ul className="feature-list">
+                {selected.features.map((f) => (
+                  <li key={f}>
+                    <Check size={17} />
+                    {f}
+                  </li>
+                ))}
+              </ul>
+              <div className="project-tags">
+                {selected.stack.map((t) => (
+                  <span key={t}>{t}</span>
+                ))}
+              </div>
+              <p className="case-note">{selected.note}</p>
+              <div className="dialog-actions">
+                {selected.url ? (
+                  <a
+                    className="button"
+                    href={selected.url}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
+                    Visitar site <ArrowUpRight size={17} />
+                  </a>
+                ) : null}
+                <a
+                  className="button button-outline"
+                  href={whatsappUrl(
+                    `Olá, Luis! Vi o projeto ${selected.title} no seu portfólio e gostaria de conversar sobre uma solução para meu negócio.`,
+                  )}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  Quero algo assim <ArrowUpRight size={17} />
+                </a>
+              </div>
+            </>
+          ) : null}
+        </div>
+      </dialog>
     </section>
-  )
+  );
 }
