@@ -11,8 +11,8 @@ export default function Image() {
         display: "flex",
         flexDirection: "column",
         justifyContent: "space-between",
-        background: "#111916",
-        color: "#f2f2e9",
+        background: "#0b1629",
+        color: "#f3f7ff",
         padding: "68px 76px",
         fontFamily: "sans-serif",
       }}
@@ -20,8 +20,8 @@ export default function Image() {
       <div style={{ display: "flex", alignItems: "center", gap: 20 }}>
         <span
           style={{
-            background: "#c6f17b",
-            color: "#111916",
+            background: "#8dceff",
+            color: "#0b1629",
             padding: "8px 18px",
             borderRadius: 14,
             fontSize: 42,
@@ -43,14 +43,14 @@ export default function Image() {
         }}
       >
         <span>Seu negócio, uma versão</span>
-        <span style={{ color: "#c6f17b" }}>mais digital.</span>
+        <span style={{ color: "#8dceff" }}>mais digital.</span>
       </div>
       <div
         style={{
           display: "flex",
           justifyContent: "space-between",
           fontSize: 22,
-          color: "#c0cbc3",
+          color: "#b8c9e0",
         }}
       >
         <span>Sites · Agendamentos · Sistemas · Dashboards</span>
